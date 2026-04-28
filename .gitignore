@@ -191,4 +191,5 @@ dist
 .ionide
 .prettierrc
 
+adminlte3/
 # End of https://www.toptal.com/developers/gitignore/api/composer,node,laravel,visualstudiocode
