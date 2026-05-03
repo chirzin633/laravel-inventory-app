@@ -1,3 +1,6 @@
-<div>
-    <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
-</div>
+<!-- jQuery -->
+<script data-navigate-once src="{{ asset('adminlte3/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script data-navigate-once src="{{ asset('adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script data-navigate-once src="{{ asset('adminlte3/dist/js/adminlte.min.js') }}"></script>

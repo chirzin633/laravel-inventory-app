@@ -6,14 +6,14 @@
             src="{{ asset('adminlte3/dist/img/AdminLTELogo.png') }}"
             alt="AdminLTE Logo"
             class="brand-image img-circle" />
-        <span class="brand-text font-weight-light">Inventory App</span>
+        <span class="font-weight-light brand-text">Inventory App</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="flex-column nav nav-pills nav-sidebar" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
@@ -23,19 +23,28 @@
 
                 <li class="nav-header">SUPER ADMIN</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('menuSuperAdminUser')">
+                    <a
+                        wire:navigate
+                        href="{{ route('superadmin.user.index') }}"
+                        class="nav-link @yield('menuSuperAdminUser')">
                         <i class="nav-icon fas fa-user"></i>
                         <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a
+                        wire:navigate
+                        href="{{ route('superadmin.category.index') }}"
+                        class="nav-link @yield('menuSuperAdminCategory')">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Category</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a
+                        wire:navigate
+                        href="{{ route('superadmin.product.index') }}"
+                        class="nav-link @yield('menuSuperAdminProduct')">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>Product</p>
                     </a>

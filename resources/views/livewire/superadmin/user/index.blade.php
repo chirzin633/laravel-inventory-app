@@ -2,17 +2,17 @@
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="mb-2 row">
                     <div class="col-sm-6">
                         <h1>
-                            <i class="fas fa-user mr-1"></i>
+                            <i class="mr-1 fas fa-user"></i>
                             @yield ('title')
                         </h1>
                     </div>
                     <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
+                        <ol class="float-sm-right breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#"><i class="fas fa-home mr-1"></i>Dashboard</a>
+                                <a href="#"><i class="mr-1 fas fa-home"></i>Dashboard</a>
                             </li>
                             <li class="breadcrumb-item active">@yield ('title')</li>
                         </ol>
@@ -25,9 +25,9 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <button class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i>Add Data</button>
+                            <button class="btn btn-sm btn-primary"><i class="mr-1 fas fa-plus"></i>Add Data</button>
                         </div>
                         <div class="btn-group dropleft">
                             <button
@@ -35,21 +35,72 @@
                                 class="btn btn-warning btn-sm dropdown-toggle"
                                 data-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fas fa-print mr-1"></i>
+                                <i class="mr-1 fas fa-print"></i>
                                 Cetak
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item text-success" href="#"
-                                    ><i class="fas fa-file-excel mr-2"></i>Excel</a
+                                <a class="text-success dropdown-item" href="#"
+                                    ><i class="mr-2 fas fa-file-excel"></i>Excel</a
                                 >
-                                <a class="dropdown-item text-danger" href="#"
-                                    ><i class="fas fa-file-pdf mr-2"></i>PDF</a
+                                <a class="text-danger dropdown-item" href="#"
+                                    ><i class="mr-2 fas fa-file-pdf"></i>PDF</a
                                 >
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">ISI KONTEN</div>
+                <div class="card-body">
+                    <div class="mb-2 d-flex justify-content-between">
+                        <div class="col-2">
+                            <select wire:model.live="paginate" class="form-control">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <input wire:model.live="search" type="text" placeholder="Search..." class="form-control" />
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th><i class="fas fa-cog"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->role === 'Super Admin')
+                                                <span class="badge badge-info">{{ $user->role }}</span>
+                                            @else
+                                                <span class="badge badge-light"> {{ $user->role }} </span>
+                                            @endif
+                                        </td>
+
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="mr-1 fas fa-edit"></i>Edit
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="mr-1 fas fa-trash"></i>Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $users->links() }}
+                    </div>
+                </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
