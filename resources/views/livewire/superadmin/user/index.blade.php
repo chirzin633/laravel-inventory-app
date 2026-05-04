@@ -6,7 +6,7 @@
                     <div class="col-sm-6">
                         <h1>
                             <i class="mr-1 fas fa-user"></i>
-                            @yield ('title')
+                            {{ $title }}
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#"><i class="mr-1 fas fa-home"></i>Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active">@yield ('title')</li>
+                            <li class="breadcrumb-item active">{{ $title }}</li>
                         </ol>
                     </div>
                 </div>
@@ -27,7 +27,14 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <button class="btn btn-sm btn-primary"><i class="mr-1 fas fa-plus"></i>Add Data</button>
+                            <button
+                                wire:click="create"
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                data-toggle="modal"
+                                data-target="#createModal">
+                                <i class="mr-1 fas fa-plus"></i>Add Data
+                            </button>
                         </div>
                         <div class="btn-group dropleft">
                             <button
@@ -106,5 +113,23 @@
             <!-- /.card -->
         </section>
         <!-- /.content -->
+
+        {{-- Create Modal --}}
+        @include ('livewire.superadmin.user.create')
+        {{-- Create Modal --}}
+
+        {{-- Close Create Modal --}}
+        @script
+            <script>
+                $wire.on('closeCreateModal', () => {
+                    $('#createModal').modal('hide');
+                });
+            </script>
+        @endscript
+        {{-- Close Create Modal --}}
+
+        {{-- Sweet Alert --}}
+        @include ('sweetalert2::index')
+        {{-- Sweet Alert --}}
     </div>
 </div>
