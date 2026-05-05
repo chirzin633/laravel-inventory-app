@@ -94,7 +94,11 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-sm btn-warning">
+                                            <button
+                                                wire:click="edit({{ $user->id }})"
+                                                data-toggle="modal"
+                                                data-target="#editModal"
+                                                class="btn btn-sm btn-warning">
                                                 <i class="mr-1 fas fa-edit"></i>Edit
                                             </button>
                                             <button class="btn btn-sm btn-danger">
@@ -118,15 +122,29 @@
         @include ('livewire.superadmin.user.create')
         {{-- Create Modal --}}
 
+        {{-- Edit Modal --}}
+        @include ('livewire.superadmin.user.edit')
+        {{-- Edit Modal --}}
+
         {{-- Close Create Modal --}}
         @script
             <script>
-                $wire.on('closeCreateModal', () => {
-                    $('#createModal').modal('hide');
+                $wire.on('closeEditModal', () => {
+                    $('#editModal').modal('hide');
                 });
             </script>
         @endscript
         {{-- Close Create Modal --}}
+
+        {{-- Close Edit Modal --}}
+        @script
+            <script>
+                $wire.on('closeEditModal', () => {
+                    $('#editModal').modal('hide');
+                });
+            </script>
+        @endscript
+        {{-- Close Edit Modal --}}
 
         {{-- Sweet Alert --}}
         @include ('sweetalert2::index')
