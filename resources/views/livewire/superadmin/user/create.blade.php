@@ -92,7 +92,7 @@
                             wire:model="password_confirmation"
                             type="password"
                             class="form-control @error ('password_confirmation') is-invalid @enderror"
-                            placeholder="Input password_confirmation..." />
+                            placeholder="Input password confirmation..." />
                         @error ('password_confirmation')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

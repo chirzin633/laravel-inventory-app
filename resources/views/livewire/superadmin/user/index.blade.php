@@ -101,7 +101,11 @@
                                                 class="btn btn-sm btn-warning">
                                                 <i class="mr-1 fas fa-edit"></i>Edit
                                             </button>
-                                            <button class="btn btn-sm btn-danger">
+                                            <button
+                                                wire:click="confirm({{ $user->id }})"
+                                                class="btn btn-sm btn-danger"
+                                                data-toggle="modal"
+                                                data-target="#deleteModal">
                                                 <i class="mr-1 fas fa-trash"></i>Delete
                                             </button>
                                         </td>
@@ -126,11 +130,15 @@
         @include ('livewire.superadmin.user.edit')
         {{-- Edit Modal --}}
 
+        {{-- Delete Modal --}}
+        @include ('livewire.superadmin.user.delete')
+        {{-- Delete Modal --}}
+
         {{-- Close Create Modal --}}
         @script
             <script>
-                $wire.on('closeEditModal', () => {
-                    $('#editModal').modal('hide');
+                $wire.on('closeCreateModal', () => {
+                    $('#createModal').modal('hide');
                 });
             </script>
         @endscript
@@ -145,6 +153,16 @@
             </script>
         @endscript
         {{-- Close Edit Modal --}}
+
+        {{-- Close Delete Modal --}}
+        @script
+            <script>
+                $wire.on('closeDeleteModal', () => {
+                    $('#deleteModal').modal('hide');
+                });
+            </script>
+        @endscript
+        {{-- Close Delete Modal --}}
 
         {{-- Sweet Alert --}}
         @include ('sweetalert2::index')

@@ -125,4 +125,30 @@ class Index extends Component
             'timer' => 1500,
         ]);
     }
+
+    public function confirm($id)
+    {
+        $user = User::findOrFail($id);
+        $this->userId = $id;
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->role = $user->role;
+    }
+
+    public function destroy()
+    {
+        $user = User::findOrFail($this->userId);
+        $user->delete();
+        $this->dispatch('closeDeleteModal');
+
+        $this->swalFire([
+            'title' => 'Deleted',
+            'text' => 'User has been deleted',
+            'icon' => 'success',
+            'confirmButtonText' => 'Ok',
+            'timer' => 1500,
+        ]);
+
+        $this->resetPage();
+    }
 }
