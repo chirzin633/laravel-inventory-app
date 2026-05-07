@@ -69,7 +69,6 @@ class Index extends Component
             'title' => 'Success',
             'text' => 'Data successfully created!',
             'icon' => 'success',
-            'confirmButtonText' => 'Ok',
             'timer' => 1500,
         ]);
     }
@@ -121,7 +120,6 @@ class Index extends Component
             'title' => 'Success',
             'text' => 'Data has been updated!',
             'icon' => 'success',
-            'confirmButtonText' => 'Ok',
             'timer' => 1500,
         ]);
     }
@@ -145,7 +143,6 @@ class Index extends Component
             'title' => 'Deleted',
             'text' => 'User has been deleted',
             'icon' => 'success',
-            'confirmButtonText' => 'Ok',
             'timer' => 1500,
         ]);
 

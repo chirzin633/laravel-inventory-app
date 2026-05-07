@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-8">
                         <select name="role" wire:model="role" class="form-control @error('role') is-invalid @enderror">
-                            <option selected>--Pilih Role--</option>
+                            <option selected value="">--Pilih Role--</option>
                             <option value="Super Admin">Super Admin</option>
                             <option value="Admin">Admin</option>
                         </select>
