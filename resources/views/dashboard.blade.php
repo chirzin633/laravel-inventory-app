@@ -1,3 +1,9 @@
-<div>
-    <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
-</div>
+@extends ('layouts.app')
+
+@section ('title', 'Dashboard')
+
+@section ('menuDashboard', 'active')
+
+@section ('content')
+    @livewire ('dashboard')
+@endsection

@@ -15,7 +15,7 @@
         <nav class="mt-2">
             <ul class="flex-column nav nav-pills nav-sidebar" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a wire:navigate href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
