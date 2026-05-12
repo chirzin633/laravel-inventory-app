@@ -21,41 +21,51 @@
                     </a>
                 </li>
 
-                <li class="nav-header">SUPER ADMIN</li>
-                <li class="nav-item">
-                    <a
-                        wire:navigate
-                        href="{{ route('superadmin.user.index') }}"
-                        class="nav-link @yield('menuSuperAdminUser')">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>User</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        wire:navigate
-                        href="{{ route('superadmin.category.index') }}"
-                        class="nav-link @yield('menuSuperAdminCategory')">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>Category</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        wire:navigate
-                        href="{{ route('superadmin.product.index') }}"
-                        class="nav-link @yield('menuSuperAdminProduct')">
-                        <i class="nav-icon fas fa-warehouse"></i>
-                        <p>Product</p>
-                    </a>
-                </li>
-                <li class="nav-header">ADMIN</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-warehouse"></i>
-                        <p>Product</p>
-                    </a>
-                </li>
+                {{-- Menu Super Admin --}}
+                @if (Auth::user()->role === 'Super Admin')
+                    <li class="nav-header">SUPER ADMIN</li>
+                    <li class="nav-item">
+                        <a
+                            wire:navigate
+                            href="{{ route('superadmin.user.index') }}"
+                            class="nav-link @yield('menuSuperAdminUser')">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>User</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            wire:navigate
+                            href="{{ route('superadmin.category.index') }}"
+                            class="nav-link @yield('menuSuperAdminCategory')">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Category</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            wire:navigate
+                            href="{{ route('superadmin.product.index') }}"
+                            class="nav-link @yield('menuSuperAdminProduct')">
+                            <i class="nav-icon fas fa-warehouse"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                @endif
+
+                {{-- Menu Admin --}}
+                @if (Auth::user()->role === 'Admin')
+                    <li class="nav-header">ADMIN</li>
+                    <li class="nav-item">
+                        <a
+                            wire:navigate
+                            href="{{ route('admin.product.index') }}"
+                            class="nav-link @yield('menuAdminProduct')">
+                            <i class="nav-icon fas fa-warehouse"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

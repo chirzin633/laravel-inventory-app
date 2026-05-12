@@ -1,3 +1,8 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-</div>
+@extends ('layouts.app')
+
+@section ('title', 'Data Product')
+@section ('menuAdminProduct', 'active')
+
+@section ('content')
+    @livewire ('admin.product.index')
+@endsection
